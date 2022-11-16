@@ -13,4 +13,13 @@ CREATE TABLE usuario(
     email varchar(150) not null,
     senha varchar(100) not null,
     telefone varchar(40),
-    ativo boolean DEFAULT true );
+    ativo boolean DEFAULT true
+);
+
+show tables;
+
+desc usuario;
+
+INSERT into usuario (nome, email, senha) VALUES('Ana Maria', 'ana@email.com', '12345');
+
+select * from usuario;
