@@ -7,7 +7,6 @@ ini_set("display_errors", 1);
 ini_set('display_startup_errors', 1);
 ini_set("enable_post_data_reading", 1);
 
-
 define("DRIVE", "mysql"); // Qual tipo de banco de dados
 define("HOST", "localhost"); // url ou ip do local do banco de dados
 define("PORT", "3306"); // Porta de acesso ao banco de dados
