@@ -1,4 +1,6 @@
-/* DDL: linguagem de definição de dados */ 
+/* SQL: Standard Query Language, literalmente a linguagem padrão para realizar queries.*/
+
+/* DDL: linguagem de definição(criação da estrutura) de dados */ 
 create database lojaweb;
 
 use lojaweb;
@@ -7,7 +9,7 @@ show databases;
 
 CREATE TABLE usuario(
     id_usuario int AUTO_INCREMENT PRIMARY KEY,
-    #id_usuario varchar(50) PRIMARY KEY,
+    --id_usuario varchar(50) PRIMARY KEY, -- ou # para uma linha e /* */ para multiplas linha
     nome varchar(100) not null,
     foto varchar(150),
     cpf varchar(14),
@@ -23,7 +25,7 @@ desc usuario;
 
 alter TABLE usuario add data_nasc date null;
 
-CREATE TABLE Funcionario( 
+CREATE TABLE funcionario( 
     id_funcionario int AUTO_INCREMENT PRIMARY KEY,
     cargo varchar(50) NOT null,
     id_usuario int NOT Null,
@@ -56,9 +58,37 @@ WHERE funcionario.cargo = "Gerente";
 SELECT * 
 FROM usuario,funcionario 
 where usuario.id_usuario = funcionario.id_usuario
-and usuario.data_nasc ='2022-12-01';
+and usuario.data_nasc ='1980-12-01';
 
 SELECT * 
 FROM usuario,funcionario 
 where usuario.id_usuario = funcionario.id_usuario 
-and usuario.data_nasc BETWEEN '2022-12-01' and '2022-12-30';
+and usuario.data_nasc BETWEEN '1980-12-01' and '1980-12-30';/* YYYY-MM-DD*/
+
+
+-- ---------------------------
+
+INSERT INTO usuario (data_nasc) VALUES ('1980-12-20');
+
+UPDATE usuario 
+SET 
+nome = 'Carlos Silva Jr',
+email = 'carlosjr@email.com',
+senha = '1234rj'
+where id_usuario = 5;
+
+UPDATE usuario 
+SET 
+data_nasc = '1980-12-14'
+where id_usuario = 5;
+
+
+SELECT * 
+FROM usuario,funcionario
+WHERE usuario.ativo = true
+and usuario.id_usuario = funcionario.id_funcionario;
+
+SELECT DISTINCT * 
+FROM usuario
+left join funcionario as f on usuario.id_usuario = f.id_usuario
+WHERE usuario.ativo=true;
