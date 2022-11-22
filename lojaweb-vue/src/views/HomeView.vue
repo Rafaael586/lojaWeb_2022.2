@@ -1,9 +1,15 @@
 <script setup>
-// import TheWelcome from '../components/TheWelcome.vue'
+import NavBar from '../components/NavBar.vue';
+
+// export default {
+//   components: { NavBar }
+// }
+
 </script>
 
 <template>
-  <main>
-
-  </main>
+  <NavBar></NavBar>
+  <section>
+    <h2>Home</h2>
+  </section>
 </template>

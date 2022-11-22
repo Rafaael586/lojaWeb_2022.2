@@ -1,9 +1,18 @@
+<script setup>
+import NavBar from '../components/NavBar.vue';
+
+// export default {
+//   components: { NavBar }
+// }
+
+</script>
 <template>
-  <div class="about">
+  <NavBar></NavBar>
+  <section>
     <h1>This is an about page</h1>
-  </div>
+  </section>
 </template>
 
-<style>
+<style scoped>
 
 </style>
