@@ -47,10 +47,10 @@ export default {
                     </form>
 
                     <li class="nav-item">
-                        <RouterLink class="nav-link" aria-current="page" to="/usuario/cadastro">Cadastro</RouterLink>
+                        <RouterLink class="nav-link" aria-current="page" to="/user/add">Cadastro</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link" aria-current="page" to="/usuario/cadastro">Entrar</RouterLink>
+                        <RouterLink class="nav-link" aria-current="page" to="/user/enter">Entrar</RouterLink>
                     </li>
                 </ul>
             </div>

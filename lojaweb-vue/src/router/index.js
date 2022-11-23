@@ -18,9 +18,9 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/usuario/cadastro',
-      name: 'usuario-cadastro',
-      component: () => import('../views/UsuarioAdd.vue')
+      path: '/user/add',
+      name: 'user-add',
+      component: () => import('../views/UserAdd.vue')
     }
   ]
 })
