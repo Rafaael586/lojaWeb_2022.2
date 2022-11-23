@@ -12,7 +12,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <template>
@@ -65,7 +64,7 @@ export default {
                 Sair
             </button>
         </div>
-        <!-- Mostar a variavel "{{ }}" -->
+        <!-- Mostrar o conteúdo da  variável "{{ }}" -->
         {{ user.nome }} - {{ user.email }}
     </section>
 </template>
