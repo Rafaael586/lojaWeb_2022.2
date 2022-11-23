@@ -1,8 +1,16 @@
 <script>
 import NavBar from '../components/NavBar.vue';
+import { User } from '../model/User.js';
+
+var user = new User(); //Criando um objeto do tipo User (Classe)
 
 export default {
-    components: { NavBar }
+    components: { NavBar },
+    data() {
+        return {
+            user
+        }
+    }
 }
 
 </script>
@@ -13,13 +21,15 @@ export default {
         <h2>Cadastro</h2>
         <div class="form-group">
             <label for="">Nome</label>
-            <input type="text" name="nome" class="form-control" placeholder="" aria-describedby="helpName" />
+            <input type="text" name="nome" class="form-control" placeholder="" aria-describedby="helpName"
+                v-model="user.nome" />
             <small id="helpName" class="text-muted"></small>
         </div>
 
         <div class="form-group">
             <label for="">E-mail</label>
-            <input type="email" name="email" class="form-control" placeholder="" aria-describedby="helpEmail" />
+            <input type="email" name="email" class="form-control" placeholder="" aria-describedby="helpEmail"
+                v-model="user.email" />
             <small id="helpEmail" class="text-muted"></small>
         </div>
 
@@ -55,6 +65,8 @@ export default {
                 Sair
             </button>
         </div>
+        <!-- Mostar a variavel "{{ }}" -->
+        {{ user.nome }} - {{ user.email }}
     </section>
 </template>
 
