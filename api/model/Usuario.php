@@ -27,8 +27,49 @@ include_once("./service/DAO.php");
                 $stman->bindParam(":telefone", $this->telefone);
                 $stman->execute();//grava dos dados no banco de dados;
             }catch(Exception $e){
-                //log
                 throw new Exception("Erro ao cadastra o usuario! ".$e->getMessage());
+            }
+        }
+
+        function getAll(){
+            try {
+                $dao = new DAO;
+                $conn = $dao->conecta();
+                $sql = "SELECT id_usuario, nome, foto, cpf, email, telefone, data_nasc, ativo from usuario where usuario.ativo = true";
+                $stman = $conn->prepare($sql);
+                $stman->execute();
+                $result = $stman->fetchAll();
+                return $result;
+                //return $stman->fetchAll();
+            } catch (PDOException $pdoe) {
+                throw new Exception("Erro ao executar comando na base de dados! ".$pdoe->getMessage());
+            } catch (JsonException $jsone) {
+                throw new Exception("Erro ao montar o json! ".$jsone->getMessage());
+            } catch (Exception $e) {
+                throw new Exception("Erro ao listar todos os usuario! ".$e->getMessage());
+            }
+        }
+
+        function get($id){
+             try {
+                $dao = new DAO;
+                $conn = $dao->conecta();
+                $sql = "SELECT id_usuario,nome, foto, cpf, email, telefone, data_nasc, ativo 
+                from usuario 
+                where usuario.id_usuario=:id 
+                and usuario.ativo = true";
+                $stman = $conn->prepare($sql);
+                $stman->bindParam(":id", $id);
+                $stman->execute();
+                $result = $stman->fetchAll();
+                return $result;
+                //return $stman->fetchAll();
+            } catch (PDOException $pdoe) {
+                throw new Exception("Erro ao executar comando na base de dados! ".$pdoe->getMessage());
+            } catch (JsonException $jsone) {
+                throw new Exception("Erro ao montar o json! ".$jsone->getMessage());
+            } catch (Exception $e) {
+                throw new Exception("Erro ao listar todos os usuario! ".$e->getMessage());
             }
         }
     }
