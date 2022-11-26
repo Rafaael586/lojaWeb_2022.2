@@ -10,24 +10,30 @@ include_once("./service/DAO.php");
         public $email;
         public $senha;
         public $telefone;
+        public $data_nasc;
         public $ative = true;
 
         function add(){
             try{
                 $dao = new DAO;
                 $conn = $dao->conecta();//conectar ao banco de dados;
-                $sql = "INSERT into usuario (nome, foto, cpf, email, senha, telefone) 
-                VALUES (:nome, :foto, :cpf, :email, :senha, :telefone)";//Criar o comando SQL com os paramentos
+                $sql = "INSERT into usuario (nome, foto, cpf, email, senha, telefone, data_nasc) 
+                VALUES (:nome, :foto, :cpf, :email, md5(:senha), :telefone, :data_nasc)";//Criar o comando SQL com os paramentos
+                
+                //Define a nova senha criptografada.
+                $newSenha = crypt($this->senha, '$5$rounds=5000$' . $this->email. '$');
+                
                 $stman = $conn->prepare($sql);//Prepara o comando SQL para executar;
                 $stman->bindParam(":nome", $this->nome);
                 $stman->bindParam(":email", $this->email);
                 $stman->bindParam(":cpf", $this->cpf);
                 $stman->bindParam(":foto", $this->foto);
-                $stman->bindParam(":senha", $this->senha);
+                $stman->bindParam(":data_nasc", $this->data_nasc);
+                $stman->bindParam(":senha", $newSenha);
                 $stman->bindParam(":telefone", $this->telefone);
                 $stman->execute();//grava dos dados no banco de dados;
             }catch(Exception $e){
-                throw new Exception("Erro ao cadastra o usuario! ".$e->getMessage());
+                throw new Exception("Erro ao cadastra o usuário! ".$e->getMessage());
             }
         }
 
