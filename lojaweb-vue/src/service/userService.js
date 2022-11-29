@@ -22,13 +22,13 @@ export default {
         }
     },
 
-    list: function () {
+    list: function (callback) {
         try {
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function () {
                 alert("Lista", this.responseText);
                 console.log(this.responseText);
-                return this.responseText;
+                callback(this.responseText);
             }
             xhttp.open("GET", "http://localhost:8000/usuario/list", false);
             //Header da mensagem: todas as origins
