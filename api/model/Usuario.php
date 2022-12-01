@@ -94,22 +94,17 @@ class Usuario
                 foto = :foto,
                 cpf = :cpf,
                 email = :email,
-                --senha = md5(:senha),
                 telefone = :telefone,
                 data_nasc = :data_nasc 
-                where id_usuario = :id;";
-
-            //Define a nova senha criptografada.
-            //$newSenha = crypt($this->senha, '$5$rounds=5000$' . $this->email . '$');
+                where id_usuario = :id";
 
             $stman = $conn->prepare($sql); //Prepara o comando SQL para executar;
             $stman->bindParam(":nome", $this->nome);
-            $stman->bindParam(":email", $this->email);
-            $stman->bindParam(":cpf", $this->cpf);
             $stman->bindParam(":foto", $this->foto);
-            $stman->bindParam(":data_nasc", $this->data_nasc); //YYYY-MM-DD -> BR: DD-MM-YYYY
-            //$stman->bindParam(":senha", $newSenha);
+            $stman->bindParam(":cpf", $this->cpf);
+            $stman->bindParam(":email", $this->email);
             $stman->bindParam(":telefone", $this->telefone);
+            $stman->bindParam(":data_nasc", $this->data_nasc); //YYYY-MM-DD -> BR: DD-MM-YYYY
             $stman->bindParam(":id", $this->id_usuario);
             $stman->execute(); //grava dos dados no banco de dados;
         } catch (Exception $e) {
