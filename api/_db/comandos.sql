@@ -92,3 +92,15 @@ SELECT DISTINCT *
 FROM usuario
 left join funcionario as f on usuario.id_usuario = f.id_usuario
 WHERE usuario.ativo=true;
+
+-----
+
+CREATE table endereco( 
+    cep varchar(10) PRIMARY KEY NOT null,
+    logradouro varchar(150),
+    bairro varchar(50),
+    cidade varchar(50),
+    uf varchar(2) 
+)
+
+SELECT * FROM `usuario` LIMIT 21,40;
