@@ -2,22 +2,39 @@
 import NavBar from '@/components/NavBar.vue';
 import userService from '@/service/userService';
 
-
 export default {
     components: { NavBar },
     data() {
         return {
-            Usuarios: []
+            usuarios: [],
+            usuario: {}
         }
     },
     mounted() {
-        this.lista()
+        this.lista();
+        this.get(14);
     },
     methods: {
-        lista() {
-            userService.list(dados => {
-                this.Usuarios = JSON.parse(dados);
+        listaOld() {
+            userService.listOld(dados => {
+                this.usuarios = JSON.parse(dados);
             });
+        },
+        list() {
+            userService.list().then(res => {
+                this.Usuarios = res
+            }).catch(error => {
+                console.log(error);
+                alert("Erro ao pegar a lista de usuário!");
+            })
+        },
+        get(id) {
+            userService.get(id).then(res => {
+                this.usuario = res
+            }).catch(error => {
+                console.log(error);
+                alert("Erro ao pegar dados do usuário!");
+            })
         }
     }
 }

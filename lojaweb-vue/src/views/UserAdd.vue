@@ -1,7 +1,8 @@
 <script>
 import NavBar from '../components/NavBar.vue';
 import { User } from '../model/User.js';
-import userService from '@/service/userService'
+import userService from '@/service/userService';
+import router from '@router';
 
 var user = new User(); //Criando um objeto do tipo User (Classe)
 
@@ -13,9 +14,18 @@ export default {
         }
     },
     methods: {
-        cadastro() {
-            userService.add(this.user);
+        userAddOld() {
+            userService.addOld(this.user);
+        },
+        userAdd() {
+            userService.add(this.user).then(res => {
+                alert(res);
+                router.push("/");
+            }).catch(error => {
+                alert(error);
+            });
         }
+
     }
 }
 </script>
