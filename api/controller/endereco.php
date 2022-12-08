@@ -10,7 +10,7 @@ function enderecoController($method, $router)
 function post($method, $router)
 {
     if ($method == "POST") {
-        if ($router == "/endereco/add") {
+        if (!empty(strstr($router, "/endereco/add"))) {
             try {
                 $dados = json_decode(file_get_contents('php://input'));
 
@@ -35,7 +35,7 @@ function post($method, $router)
 function get($method, $router)
 {
     if ($method == "GET") { //Busca de dados
-        if ($router == "/endereco/list") {
+        if (!empty(strstr($router, "/endereco/list"))) {
             try {
                 $endereco = new Endereco();
                 $result = $endereco->getAll();

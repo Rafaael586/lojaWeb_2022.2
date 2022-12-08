@@ -3,7 +3,7 @@ import axios from 'axios';
 const configure = {
     //local: location.origin.replace(location.port, ""),
     //local: location.origin.replace(location.port, "") + "/api/"
-    local: "http://localhost/api"
+    local: "http://localhost/api/"
 };
 
 const http = axios.create({

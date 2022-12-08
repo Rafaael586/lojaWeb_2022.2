@@ -4,7 +4,7 @@ include_once("./model/Usuario.php");
 function usuarioController($method, $router)
 {
     if ($method == "POST") { //Envio dados e cadastros
-        if ($router == "/usuario/add") {
+        if (!empty(strstr($router, "/usuario/add"))) {
             //         try {
             //             $dados = json_decode(file_get_contents('php://input'));
             //             //var_dump($dados);
@@ -25,7 +25,7 @@ function usuarioController($method, $router)
             //     }
             // }
             // if ($method == "PUT") { //Alterações de dados
-            //if ($router == "/usuario/update") {
+            //if (!empty(strstr($router, "/usuario/update"))) {
             try {
                 $dados = json_decode(file_get_contents('php://input'));
                 //var_dump($dados);
@@ -56,7 +56,7 @@ function usuarioController($method, $router)
     }
 
     if ($method == "GET") { //Busca de dados
-        if ($router == "/usuario/list") {
+        if (!empty(strstr($router, "/usuario/list"))) {
             try {
                 $user = new Usuario();
                 $result = $user->getAll();
@@ -72,7 +72,9 @@ function usuarioController($method, $router)
                 //$id = $_GET["id"];
                 //var_dump($_GET);
                 //var_dump(explode("/", $router)); //explode: separa uma string em vetor com base em um caracter. No exemplo o "/"
-                $id = explode("/", $router)[3];
+
+                $dados = explode("/", $router);
+                $id = $dados[count($dados) - 1];
                 $user = new Usuario();
                 $result = $user->get($id);
                 http_response_code(200);
@@ -85,7 +87,7 @@ function usuarioController($method, $router)
     }
 
     if ($method == "DELETE") { //Busca de dados
-        if ($router == "/usuario") {
+        if (!empty(strstr($router, "/usuario"))) {
             try {
                 $dados = json_decode(file_get_contents('php://input'));
                 $user = new Usuario();

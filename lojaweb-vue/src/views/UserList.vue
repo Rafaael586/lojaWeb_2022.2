@@ -23,7 +23,8 @@ export default {
         list() {
             userService.list()
                 .then(res => {
-                    this.Usuarios = res
+                    console.log(res);
+                    this.usuarios = res.data
                 }).catch(error => {
                     console.log(error);
                     alert("Erro ao pegar a lista de usuário!");
@@ -32,7 +33,8 @@ export default {
         get(id) {
             userService.get(id)
                 .then(res => {
-                    this.usuario = res
+                    console.log(res);
+                    this.usuario = res.data
                 }).catch(error => {
                     console.log(error);
                     alert("Erro ao pegar dados do usuário!");
@@ -59,16 +61,16 @@ export default {
                 <th>Ativo</th>
             </thead>
             <tbody>
-                <tr v-for="usuario in Usuarios" :key="usuario">
-                    <td>{{ usuario.id_usuario }}</td>
-                    <td>{{ usuario.nome }}</td>
-                    <td>{{ usuario.email }}</td>
-                    <td>{{ usuario.data_nasc }}</td>
-                    <td>{{ usuario.cpf }}</td>
-                    <td>{{ usuario.foto }}</td>
-                    <!-- <td>{{ usuario.senha }}</td> -->
-                    <td>{{ usuario.telefone }}</td>
-                    <td>{{ usuario.ativo }}</td>
+                <tr v-for="user in usuarios" :key="user">
+                    <td>{{ user.id_usuario }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.data_nasc }}</td>
+                    <td>{{ user.cpf }}</td>
+                    <td>{{ user.foto }}</td>
+                    <!-- <td>{{ user.senha }}</td> -->
+                    <td>{{ user.telefone }}</td>
+                    <td>{{ user.ativo }}</td>
                 </tr>
             </tbody>
         </table>
