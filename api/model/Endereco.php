@@ -45,6 +45,24 @@ class Endereco
         }
     }
 
+    function getAll()
+    {
+        try {
+            $dao = new DAO();
+            $conn = $dao->conecta();
+            //$sql = "Select * from endereco limit :inicio, :final";
+            $sql = "Select * from endereco";
+            $stman = $conn->prepare($sql);
+            // $stman->bindParam(":inicio", $inicio);
+            // $stman->bindParam(":final", $final);
+            $stman->execute();
+            $result = $stman->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao cadastra o endereço!" . $e->getMessage());
+        }
+    }
+
     function up($idCep)
     {
         try {

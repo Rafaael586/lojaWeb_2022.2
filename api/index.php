@@ -1,6 +1,7 @@
 <?php
 include_once("./config/config.php");
 include_once("./controller/usuario.php");
+include_once("./controller/endereco.php");
 
 if (isset($_SERVER["REQUEST_METHOD"]) && isset($_SERVER["PATH_INFO"])) {
     $method = $_SERVER["REQUEST_METHOD"];
@@ -16,6 +17,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && isset($_SERVER["PATH_INFO"])) {
     //var_dump($_SERVER);
 
     usuarioController($method, $router);
+    enderecoController($method, $router);
 } else {
     http_response_code(404);
     echo json_encode(array("message" => "Item does not exist."));

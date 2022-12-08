@@ -4,25 +4,24 @@ import http from './config';
 export default {
 
     addOld: function (user = new User) {
-        // try {
-        //     const xhttp = new XMLHttpRequest();
-        //     xhttp.onload = function () {
-        //         alert("Cadastrado!", this.responseText);
-        //         console.log(user);
-        //         console.log(this.responseText);
-        //     }
-        //     xhttp.open("POST", "http://localhost:8000/usuario/add", false);
-        //     //Header da mensagem: todas as origins
-        //     xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //     //Header da mensagem: conteúdo é um json com caracteres utf-8
-        //     xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
-        //     xhttp.send(JSON.stringify(user));
-        // } catch (error) {
-        //     console.error(error);
-        //     alert("Erro: " + error);
-        // }
+        try {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                alert("Cadastrado!", this.responseText);
+                console.log(user);
+                console.log(this.responseText);
+            }
+            xhttp.open("POST", "http://localhost:8000/usuario/add", false);
+            //Header da mensagem: todas as origins
+            xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+            //Header da mensagem: conteúdo é um json com caracteres utf-8
+            xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
+            xhttp.send(JSON.stringify(user));
+        } catch (error) {
+            console.error(error);
+            alert("Erro: " + error);
+        }
         console.log(user);
-        return http.post("usuario/add", user);
     },
 
     listOld: function (callback) {
@@ -44,6 +43,7 @@ export default {
             alert("Erro: " + error);
         }
     },
+
     add: function (user = new User) {
         console.log(user);
         return http.post("usuario/add", user);
@@ -56,6 +56,4 @@ export default {
     get: function (id) {
         return http.get("usuario/get/" + id);
     }
-
-
 };
