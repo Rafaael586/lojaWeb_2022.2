@@ -2,7 +2,6 @@
 import NavBar from '../components/NavBar.vue';
 import { User } from '../model/User.js';
 import userService from '@/service/userService';
-import router from '@router';
 
 var user = new User(); //Criando um objeto do tipo User (Classe)
 
@@ -18,12 +17,14 @@ export default {
             userService.addOld(this.user);
         },
         userAdd() {
-            userService.add(this.user).then(res => {
-                alert(res);
-                router.push("/");
-            }).catch(error => {
-                alert(error);
-            });
+            userService.add(this.user)
+                .then(res => {
+                    console.log(res.data);
+                    alert("Cadastro!");
+                    //router.push("/");
+                }).catch(error => {
+                    alert(error.data);
+                });
         }
 
     }
@@ -76,7 +77,7 @@ export default {
         </div>
 
         <div class="mb-3">
-            <button type="button" class="btn btn-primary mx-1" @click="cadastro()">
+            <button type="button" class="btn btn-primary mx-1" @click="userAdd()">
                 Cadastrar
             </button>
             <button type="button" class="btn btn-danger">

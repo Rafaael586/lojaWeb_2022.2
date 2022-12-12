@@ -12,7 +12,7 @@ export default {
     },
     mounted() {
         this.list();
-        this.get(14);
+        this.get(1);
     },
     methods: {
         listaOld() {
@@ -74,6 +74,29 @@ export default {
                 </tr>
             </tbody>
         </table>
+    </section>
+
+    <section class="container">
+
+        <h2>Usuarios Cards</h2>
+        <div class="d-flex">
+            <div class="card" style="width: 18rem;" v-for="user in usuarios" :key="user.id_usuario">
+                <img :src="user.foto" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.nome }}</h5>
+                    <p class="card-text">ID: {{ user.id_usuario }} </p>
+
+                    <p class="card-text">{{ user.email }}</p>
+                    <p class="card-text">{{ user.data_nasc }}</p>
+                    <p class="card-text">{{ user.cpf }}</p>
+                    <p class="card-text"></p>
+                    <!-- <p class="card-text">{{ user.senha }}</p> -->
+                    <p class="card-text">{{ user.telefone }}</p>
+                    <p class="card-text">{{ user.ativo }}</p>
+                    <a href="#" class="btn btn-primary">Editar</a>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
