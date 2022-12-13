@@ -39,7 +39,7 @@ export default {
                     console.log(error);
                     alert("Erro ao pegar dados do usuário!");
                 })
-        }
+        },
     }
 }
 </script>

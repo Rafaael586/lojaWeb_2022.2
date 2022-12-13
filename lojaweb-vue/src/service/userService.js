@@ -55,5 +55,9 @@ export default {
 
     get: function (id) {
         return http.get("usuario/get/" + id);
+    },
+
+    logon: function (user) {
+        return http.post("usuario/logon", user);
     }
 };

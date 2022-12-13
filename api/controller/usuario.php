@@ -47,7 +47,24 @@ function usuarioController($method, $router)
                     $user->update();
                 }
 
-                echo "Dados Salvos!";
+                echo  json_encode('"result":"Dados Salvos!"');
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode("error:" . $e->getMessage());
+            }
+        }
+        if (!empty(strstr($router, "/usuario/logon"))) {
+            try {
+                $dados = json_decode(file_get_contents('php://input'));
+                $user = new Usuario();
+                $result = $user->logon($dados->email, $dados->pass);
+                if ($result != null) {
+                    http_response_code(200);
+                    echo  json_encode($result);
+                } else {
+                    http_response_code(401);
+                    echo  json_encode("Usuario não encontrado!");
+                }
             } catch (Exception $e) {
                 http_response_code(500);
                 echo json_encode("error:" . $e->getMessage());

@@ -139,4 +139,28 @@ class Usuario
             throw new Exception("Erro ao cadastra o usuário! " . $e->getMessage());
         }
     }
+
+
+    function logon($email, $pass)
+    {
+        try {
+            $dao = new DAO;
+            $conn = $dao->conecta();
+
+            $newSenha = crypt($pass, '$5$rounds=5000$' . $email . '$');
+            $sql = "SELECT id_usuario, nome, foto, cpf, email, telefone, data_nasc 
+                from usuario 
+                where usuario.email = :email 
+                and usuario.senha = md5(:pass)
+                and usuario.ativo = true";
+            $stman = $conn->prepare($sql);
+            $stman->bindParam(":email", $email);
+            $stman->bindParam(":pass", $newSenha);
+            $stman->execute();
+            $result = $stman->fetchAll();
+            return $result ? $result : null;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao entrar com o usuario! " . $e->getMessage());
+        }
+    }
 }
