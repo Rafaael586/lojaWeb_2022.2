@@ -10,6 +10,6 @@ import NavBar from '../components/NavBar.vue';
 <template>
   <NavBar></NavBar>
   <section>
-    <h2>Home</h2>
+    <h2>Home Teste Devops</h2>
   </section>
 </template>
