@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const configure = {
-    //local: location.origin.replace(location.port, ""),
-    //local: location.origin.replace(location.port, "") + "/api/"
-    local: "http://localhost:8000/api/"
+    //local: location.origin.replace(location.port, "") + "/api/" // Produção
+    //local: "http://localhost:8000/api/" // Desenvolvimento
+    local: "http://fabianomoreira.gratisphphost.info/api/" // Desenvolvimento
 };
 
 const http = axios.create({

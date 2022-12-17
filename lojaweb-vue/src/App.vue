@@ -8,6 +8,9 @@ import { RouterView } from 'vue-router'
   </main>
 </template>
 
-<style scoped>
-
+<style>
+.produto {
+  background-color: aqua;
+  height: 1000px;
+}
 </style>

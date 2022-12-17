@@ -25,6 +25,13 @@ export default {
                 }).catch(error => {
                     alert(error.data);
                 });
+        },
+        mostrar() {
+            let form = document.querySelectorAll(".form-add")[0];
+            if (form.classList.contains("hide"))
+                form.classList.remove("hide");
+            else
+                form.classList.add("hide");
         }
 
     }
@@ -33,7 +40,7 @@ export default {
 
 <template>
     <NavBar></NavBar>
-    <section class="container bg-light">
+    <section class="container bg-light form-add hide">
         <h2>Cadastro</h2>
         <div class="form-group">
             <label for="">Nome</label>
@@ -87,8 +94,16 @@ export default {
         <!-- Mostrar o conteúdo da  variável "{{ }}" -->
         <!-- {{ user.nome }} - {{ user.email }} -->
     </section>
+
+    <section>
+        <button type="button" class="btn btn-danger" @click="mostrar()">
+            Mostrar
+        </button>
+    </section>
 </template>
 
 <style scoped>
-
+.hide {
+    display: none;
+}
 </style>
