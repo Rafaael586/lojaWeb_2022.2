@@ -35,13 +35,13 @@ CREATE TABLE funcionario(
 
 /* DML: limguagem de manipulação de dados */
 INSERT into usuario (nome, email, senha) 
-VALUES ('Ana Maria', 'ana@email.com', '12345');
+VALUES (Ana Maria, ana@email.com, 12345);
 
 INSERT into usuario (nome, email, senha) 
 VALUES
-('Carlos Cunha', 'carlos@email.com', '333333'),
-('Paulo Silva', 'paulo@email.com', '222222'),
-('Maria da Silva', 'maria@email.com', '44444');
+(Carlos Cunha, carlos@email.com, 333333),
+(Paulo Silva, paulo@email.com, 222222),
+(Maria da Silva, maria@email.com, 44444);
 
 INSERT INTO funcionario (id_usuario, cargo) 
 VALUES (1,"Gerente");
@@ -58,28 +58,28 @@ WHERE funcionario.cargo = "Gerente";
 SELECT * 
 FROM usuario,funcionario 
 where usuario.id_usuario = funcionario.id_usuario
-and usuario.data_nasc ='1980-12-01';
+and usuario.data_nasc =1980-12-01;
 
 SELECT * 
 FROM usuario,funcionario 
 where usuario.id_usuario = funcionario.id_usuario 
-and usuario.data_nasc BETWEEN '1980-12-01' and '1980-12-30';/* YYYY-MM-DD*/
+and usuario.data_nasc BETWEEN 1980-12-01 and 1980-12-30;/* YYYY-MM-DD*/
 
 
 -- ---------------------------
 
-INSERT INTO usuario (data_nasc) VALUES ('1980-12-20');
+INSERT INTO usuario (data_nasc) VALUES (1980-12-20);
 
 UPDATE usuario 
 SET 
-nome = 'Carlos Silva Jr',
-email = 'carlosjr@email.com',
-senha = '1234rj'
+nome = Carlos Silva Jr,
+email = carlosjr@email.com,
+senha = 1234rj
 where id_usuario = 5;
 
 UPDATE usuario 
 SET 
-data_nasc = '1980-12-14'
+data_nasc = 1980-12-14
 where id_usuario = 5;
 
 
@@ -103,4 +103,4 @@ CREATE table endereco(
     uf varchar(2) 
 )
 
-SELECT * FROM `usuario` LIMIT 21,40;
+SELECT * FROM usuario LIMIT 21,40;

@@ -6,7 +6,7 @@ function usuarioController($method, $router)
     if ($method == "POST") { //Envio dados e cadastros
         if (!empty(strstr($router, "/usuario/add"))) {
             //         try {
-            //             $dados = json_decode(file_get_contents('php://input'));
+            //             $dados = json_decode(file_get_contents(php://input));
             //             //var_dump($dados);
             //             $user = new Usuario();
             //             $user->nome = $dados->nome;

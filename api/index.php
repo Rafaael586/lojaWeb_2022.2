@@ -1,5 +1,6 @@
 <?php
-include_once("./config/config.php");
+include_once("./config/config_dev.php");
+//include_once("./config/config_prod.php");
 include_once("./controller/usuario.php");
 include_once("./controller/endereco.php");
 
