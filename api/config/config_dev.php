@@ -15,7 +15,7 @@ define("USER", "root"); // Usuario do banco de dados
 define("DB", "lojaweb"); // Nome do banco de dados
 
 //chave do JWT
-define("KEY", "ff08e69475562803be134abe13fbd09f27356cfd14944353e789a9afa4661a70");
+define("KEY", "993fec17bdf96df04c95eaf1c5039db143096df36c3a5990827b3dd0d02d2158");
 
 // Senha do banco de dados
 define("PASS", "");

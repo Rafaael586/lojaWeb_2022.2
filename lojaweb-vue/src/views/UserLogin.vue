@@ -17,8 +17,9 @@ export default {
             userService.logon(this.usuario)
                 .then((res) => {
                     console.log(res.data);
-                    localStorage.setItem("user", JSON.stringify(res.data));
+                    sessionStorage.setItem("user", JSON.stringify(res.data));
                     alert("Usuario logado!");
+                    this.$router.push("/");
                 })
                 .catch((error) => {
                     console.log(error);

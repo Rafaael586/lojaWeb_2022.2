@@ -40,7 +40,7 @@ export default {
 
 <template>
     <NavBar></NavBar>
-    <section class="container bg-light form-add hide">
+    <section class="container bg-light form-add">
         <h2>Cadastro</h2>
         <div class="form-group">
             <label for="">Nome</label>
@@ -95,11 +95,11 @@ export default {
         <!-- {{ user.nome }} - {{ user.email }} -->
     </section>
 
-    <section>
+    <!-- <section>
         <button type="button" class="btn btn-danger" @click="mostrar()">
             Mostrar
         </button>
-    </section>
+    </section> -->
 </template>
 
 <style scoped>

@@ -1,7 +1,9 @@
 <?php
 include_once("./model/Usuario.php");
 
-function usuarioController($method, $router)
+
+
+function usuarioController($method, $router, $auth)
 {
     if ($method == "POST") { //Envio dados e cadastros
         if (!empty(strstr($router, "/usuario/add"))) {
@@ -60,7 +62,8 @@ function usuarioController($method, $router)
                 $result = $user->logon($dados->email, $dados->pass);
                 if ($result != null) {
                     http_response_code(200);
-                    echo  json_encode($result);
+                    $user = $result[0];
+                    echo json_encode(array("id" => $user->id_usuario, "nome" => $user->nome, "token" => generateJWT($user)));
                 } else {
                     http_response_code(401);
                     echo  json_encode("Usuario não encontrado!");
@@ -73,7 +76,7 @@ function usuarioController($method, $router)
     }
 
     if ($method == "GET") { //Busca de dados
-        if (!empty(strstr($router, "/usuario/list"))) {
+        if (!empty(strstr($router, "/usuario/list")) && $auth) {
             try {
                 $user = new Usuario();
                 $result = $user->getAll();
@@ -104,7 +107,7 @@ function usuarioController($method, $router)
     }
 
     if ($method == "DELETE") { //Busca de dados
-        if (!empty(strstr($router, "/usuario"))) {
+        if (!empty(strstr($router, "/usuario")) && $auth) {
             try {
                 $dados = json_decode(file_get_contents('php://input'));
                 $user = new Usuario();
